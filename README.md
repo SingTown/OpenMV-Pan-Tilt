@@ -7,4 +7,4 @@ you need:
 - 3D printer part (pantilt/stl)
 - anchor plate(pantilt/eagle)
 
-![](./pan-tilt/img/1.png)
+![](https://raw.githubusercontent.com/SingTown/OpenMV-Pan-Tilt/master/pan-tilt/img/1.jpg)
