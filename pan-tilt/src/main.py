@@ -1,8 +1,3 @@
-# Blob Detection Example
-#
-# This example shows off how to use the find_blobs function to find color
-# blobs in the image. This example in particular looks for dark green objects.
-
 import sensor, image, time
 
 from pid import PID
@@ -10,12 +5,10 @@ from pyb import Servo
 
 pan_servo=Servo(1)
 tilt_servo=Servo(2)
-# For color tracking to work really well you should ideally be in a very, very,
-# very, controlled enviroment where the lighting is constant...
+
 green_threshold   = ((13, 49, 18, 61, 6, 47))
-# You may need to tweak the above settings for tracking green things...
-# Select an area in the Framebuffer to copy the color settings.
-pan_pid = PID(p=0.1, i=0, imax=90)
+
+pan_pid = PID(p=0.5, i=0, imax=90)
 tilt_pid = PID(p=0.2, i=0, imax=90)
 sensor.reset() # Initialize the camera sensor.
 sensor.set_pixformat(sensor.RGB565) # use RGB565.
