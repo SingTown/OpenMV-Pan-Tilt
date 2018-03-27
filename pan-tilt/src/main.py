@@ -6,10 +6,13 @@ from pyb import Servo
 pan_servo=Servo(1)
 tilt_servo=Servo(2)
 
-green_threshold   = ((13, 49, 18, 61, 6, 47))
+green_threshold   = ((75, 100, -21, 11, 23, 63))
 
-pan_pid = PID(p=0.5, i=0, imax=90)
-tilt_pid = PID(p=0.2, i=0, imax=90)
+pan_pid = PID(p=0.07, i=0, imax=90) #脱机运行或者禁用图像传输，使用这个PID
+tilt_pid = PID(p=0.05, i=0, imax=90) #脱机运行或者禁用图像传输，使用这个PID
+#pan_pid = PID(p=0.1, i=0, imax=90)#在线调试使用这个PID
+#tilt_pid = PID(p=0.1, i=0, imax=90)#在线调试使用这个PID
+
 sensor.reset() # Initialize the camera sensor.
 sensor.set_pixformat(sensor.RGB565) # use RGB565.
 sensor.set_framesize(sensor.QQVGA) # use QQVGA for speed.
