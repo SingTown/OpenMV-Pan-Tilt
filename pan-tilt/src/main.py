@@ -6,7 +6,7 @@ from pyb import Servo
 pan_servo=Servo(1)
 tilt_servo=Servo(2)
 
-green_threshold   = ((75, 100, -21, 11, 23, 63))
+red_threshold  = (13, 49, 18, 61, 6, 47)
 
 pan_pid = PID(p=0.07, i=0, imax=90) #脱机运行或者禁用图像传输，使用这个PID
 tilt_pid = PID(p=0.05, i=0, imax=90) #脱机运行或者禁用图像传输，使用这个PID
@@ -33,7 +33,7 @@ while(True):
     clock.tick() # Track elapsed milliseconds between snapshots().
     img = sensor.snapshot() # Take a picture and return the image.
 
-    blobs = img.find_blobs([green_threshold])
+    blobs = img.find_blobs([red_threshold])
     if blobs:
         max_blob = find_max(blobs)
         pan_error = max_blob.cx()-img.width()/2
