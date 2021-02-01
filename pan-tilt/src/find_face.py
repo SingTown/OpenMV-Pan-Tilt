@@ -6,6 +6,9 @@ from pyb import Servo
 pan_servo=Servo(1)
 tilt_servo=Servo(2)
 
+pan_servo.calibration(500,2500,500)
+tilt_servo.calibration(500,2500,500)
+
 red_threshold  = (13, 49, 18, 61, 6, 47)
 
 pan_pid = PID(p=0.07, i=0, imax=90) #脱机运行或者禁用图像传输，使用这个PID
