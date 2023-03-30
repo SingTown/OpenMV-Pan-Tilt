@@ -17,6 +17,8 @@ tilt_pid = PID(p=0.05, i=0, imax=90) #脱机运行或者禁用图像传输，使
 #tilt_pid = PID(p=0.1, i=0, imax=90)#在线调试使用这个PID
 
 sensor.reset() # Initialize the camera sensor.
+sensor.set_contrast(3)
+sensor.set_gainceiling(16)
 sensor.set_pixformat(sensor.GRAYSCALE) # use RGB565.
 sensor.set_framesize(sensor.QVGA) # use QQVGA for speed.
 sensor.set_vflip(True)
@@ -38,7 +40,7 @@ while(True):
     clock.tick() # Track elapsed milliseconds between snapshots().
     img = sensor.snapshot() # Take a picture and return the image.
 
-    faces = img.find_features(face_cascade, threshold=0.5, scale=1.25)
+    faces = img.find_features(face_cascade, threshold=0.75, scale=1.25)
     if faces:
         face = find_max(faces)
         cx = int(face[0]+face[2]/2)
